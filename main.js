@@ -11,9 +11,40 @@
  * @returns {string} containing number converted to output system
  */
 export function main(inputNumber, inputNumberSystem, outputNumberSystem) {
-  //TODO code
-  //let dtoOut = exMain(inputNumber, inputNumberSystem, outputNumberSystem);
-  return dtoOut;
+let vysledneCislo = "";
+    let zbytek;
+
+    if (inputNumberSystem !== 10) {
+        return "Chyba: vstupní soustava musí být 10.";
+    } else if (outputNumberSystem !== 2) {
+        return "Chyba: výstupní soustava musí být 2.";
+    } else if (inputNumber === null) {
+        return "Chyba: nebylo zadáno žádné číslo.";
+    } else {
+        inputNumber = inputNumber.trim();
+
+        if (inputNumber === "") {
+            return "Chyba: nebylo zadáno žádné číslo.";
+        } else if (isNaN(inputNumber)) {
+            return "Chyba: musíš zadat pouze číslo.";
+        } else {
+            inputNumber = Number(inputNumber);
+
+            if (inputNumber < 0) {
+                return "Chyba: záporné číslo nelze převést.";
+            } else if (inputNumber === 0) {
+                return "0";
+            } else {
+                while (inputNumber > 0) {
+                    zbytek = inputNumber % 2;
+                    vysledneCislo = zbytek + vysledneCislo;
+                    inputNumber = Math.floor(inputNumber / 2);
+                }
+
+                return vysledneCislo;
+            }
+        }
+    }
 }
 
 /**
@@ -22,7 +53,7 @@ export function main(inputNumber, inputNumberSystem, outputNumberSystem) {
  * @returns {Array} array of numbers refering to permitted input systems
  */
 export function permittedInputSystems() {
-	return [10, 2];
+	return [10];
 }
 
 /**
@@ -31,5 +62,5 @@ export function permittedInputSystems() {
  * @returns {Array} array of numbers refering to permitted output systems
  */
 export function permittedOutputSystems() {
-	return [10, 2];
+	return [2];
 }

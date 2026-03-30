@@ -11,7 +11,7 @@
  * @returns {string} containing number converted to output system
  */
 export function main(inputNumber, inputNumberSystem, outputNumberSystem) { // This function converts the input number from base 10 to base 2
-let vysledneCislo = ""; // stores the final binary result
+	let vysledneCislo = ""; // stores the final binary result
     let zbytek; // stores remainder after division by 2
 
     if (inputNumberSystem !== 10) { // input system must be decimal
